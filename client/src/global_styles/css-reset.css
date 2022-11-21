@@ -1,0 +1,25 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+}
+*:-moz-focusring {
+  outline: none;
+}
+*::-moz-focus-inner {
+  outline: none;
+}
+.anchor {
+  text-decoration: none;
+}
+.centerElement {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.no-touch {
+  user-select: none;
+}
