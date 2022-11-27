@@ -1,29 +1,21 @@
-import PropTypes from "prop-types";
-import { Outlet, useNavigate } from "react-router-dom";
+// CSS Services
 import StyleManager from "../../utils/css-utils";
 import navbar_styles from "./styles/navbar.module.css";
-import NavbarLink from "./NavbarLink";
+
+import PropTypes from "prop-types";
+import { useNavigate } from "react-router-dom";
 import { useRef, useEffect } from "react";
+import useNavLinks from "../../hooks/useNavLinks";
 
 const AppNavbar = ({ navLinks }) => {
   const styles = new StyleManager(navbar_styles);
   const logoSectionRef = useRef();
+  const navLinksComponents = useNavLinks(navLinks);
   const navigate = useNavigate();
-  // const navLinks = {
-  //   Home: "/",
-  //   Clubs: "/clubs",
-  //   "About Us": "/about_us",
-  // };
-  const navLinksComponents = [];
-  for (const [page_name, path] of navLinks)
-    navLinksComponents.push(
-      <NavbarLink key={path} link_title={page_name} link_href={path} />
-    );
 
   useEffect(() => {
     logoSectionRef.current.addEventListener("click", (e) => navigate("/"));
   }, []);
-
   return (
     <>
       <nav className={styles.classes(["navbar"])}>
@@ -50,11 +42,12 @@ const AppNavbar = ({ navLinks }) => {
         </div>
       </nav>
       <div className={styles.classes(["empty-space"])}></div>
-      <Outlet />
     </>
   );
 };
 
-AppNavbar.propTypes = {};
+AppNavbar.propTypes = {
+  navLinks: PropTypes.object,
+};
 
 export default AppNavbar;

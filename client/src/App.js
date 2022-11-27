@@ -1,7 +1,7 @@
 import "./global_styles/css-reset.css";
 import "./global_styles/common-styles.css";
 import CardContainer from "./components/card/CardContainer";
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect, useContext, createContext } from "react";
 import Login from "./components/login/Login";
 import AppNavbar from "./common_components/navbar/AppNavbar";
 import ClubHeader from "./common_components/club_header/ClubHeader";
@@ -20,6 +20,10 @@ import {
 import { authorize } from "./utils/auth";
 import Dashboard from "./components/console/Console";
 import Event from "./components/events/Event";
+import { AuthProvider } from "./hooks/AuthProvider";
+import ClubRoutes from "./routes/ClubRoutes";
+import DashBoardRoutes from "./routes/DashBoardRoutes";
+import NavbarWrapper from "./common_components/navbar/NavbarWrapper";
 
 // function Something() {
 //   const { club_id } = useParams();
@@ -45,9 +49,6 @@ function EventIds() {
 
 function App() {
   const [auth, setAuth] = useState({});
-  const navLinks = new Map();
-  navLinks.set("Clubs", "/clubs");
-  navLinks.set("Login", "/login");
   console.log("render");
 
   // const checkAuthState = (auth) => {
@@ -77,18 +78,15 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<AppNavbar navLinks={navLinks} />}>
-          {/* <Route index element={<Home />} /> */}
+        <Route path="/" element={<NavbarWrapper />}>
+          <Route index element={<Home />} />
           <Route path="clubs" element={<CardContainer />} />
-          <Route path="club">
-            <Route path=":club_username">
-              <Route index element={<ClubPage auth={auth} />} />
-              <Route path="event/:event_id" element={<EventIds />} />
-            </Route>
-          </Route>
-          {/* Auth */}
-          <Route path="login" element={<Login setAuth={setAuth} />} />
-          <Route
+          <Route path="club/*" element={<ClubRoutes />} />
+        </Route>
+        {/* Auth */}
+        <Route path="/login" element={<Login setAuth={setAuth} />} />
+        <Route path="/dashboard/*" element={<DashBoardRoutes />} />
+        {/* <Route
             path="dashboard"
             element={
               <ClubHeader
@@ -102,19 +100,7 @@ function App() {
             <Route index element={<ClubConsole />} />
             <Route path="edit_info" element={<EditInfo />} />
             <Route path="edit_events" element={<EditInfo />} />
-          </Route>
-        </Route>
-        {/* 
-          
-          <Route
-            path="edit_info"
-            element={<EditInfo auth={auth} setAuth={setAuth} />}
-          /> */}
-        {/* <CardContainer /> */}
-        {/* <ClubHeader coverImg={coverImg} profileImg={profileImg} /> */}
-        {/* <Login setAuth={setAuth} /> */}
-        {/* <EditInfo /> */}
-        {/* <ClubConsole /> */}
+          </Route> */}
       </Routes>
     </BrowserRouter>
   );

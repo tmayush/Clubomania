@@ -6,12 +6,10 @@ import loginStyles from "./styles/login.module.css";
 import fetchUtil from "../../utils/fetch";
 import { authAndSuccessRedirect, authAndRedirect } from "../../utils/auth";
 import { useNavigate } from "react-router-dom";
+import NavbarWrapper from "../../common_components/navbar/NavbarWrapper";
 
 const Login = ({ setAuth }) => {
   const styles = new StyleManager(loginStyles);
-
-  const submitRef = useRef();
-  const formRef = useRef();
   const usernameInputRef = useRef();
   const passwordInputRef = useRef();
   const invalidCredsContainerRef = useRef();
@@ -49,7 +47,6 @@ const Login = ({ setAuth }) => {
     });
   };
 
-  // Setting Event Listeners
   useEffect(() => {
     const navigatePathList = [
       {
@@ -65,85 +62,85 @@ const Login = ({ setAuth }) => {
       // It redirected
       if (isRedirected !== false) return;
       // It didn't redirect
-      console.log("not logged in");
+      // console.log("not logged in");
     });
-
-    formRef.current.addEventListener("submit", sendDetails);
-    // return () => {
-    //   formRef.current.removeEventListener("submit", sendDetails);
-    // };
   }, []);
 
   return (
-    <main className={styles.classes(["main-content"])}>
-      <div
-        className={styles.classes(["sign-in-title-container"], ["no-touch"])}
-      >
-        <h1 className={styles.classes(["sign-in-title"])}>Sign In</h1>
-      </div>
-      <form ref={formRef} className={styles.classes(["login-container"])}>
-        <div className={styles.classes(["form-group"])}>
-          <label
-            className={styles.classes(["login-label"], ["no-touch"])}
-            htmlFor="username"
-          >
-            USERNAME
-          </label>
-          <input
-            ref={usernameInputRef}
-            className={styles.classes(["credentials-input"])}
-            placeholder="username"
-            type="text"
-            name="club_username"
-            id="username"
-          />
-        </div>
-        <div className={styles.classes(["form-group"])}>
-          <label
-            className={styles.classes(["login-label"], ["no-touch"])}
-            htmlFor="password"
-          >
-            PASSWORD
-          </label>
-          <input
-            ref={passwordInputRef}
-            className={styles.classes(["credentials-input"])}
-            placeholder="password"
-            type="password"
-            name="club_password"
-            id="password"
-          />
-        </div>
-        <div className={styles.classes(["form-group", "submit-btn-wrapper"])}>
-          <input
-            ref={submitRef}
-            className={styles.classes(["submit-btn"])}
-            type="submit"
-            value="LOGIN"
-          />
-        </div>
+    <>
+      <NavbarWrapper />
+      <main className={styles.classes(["main-content"])}>
         <div
-          ref={invalidCredsContainerRef}
-          className={styles.classes(["invalid-creds-container", "invisible"])}
+          className={styles.classes(["sign-in-title-container"], ["no-touch"])}
         >
-          <h3>Invalid Credentials. Please Try Again!</h3>
+          <h1 className={styles.classes(["sign-in-title"])}>Sign In</h1>
         </div>
-      </form>
-      <div className={styles.classes(["gradient"])}></div>
-      <picture className={styles.classes(["login-pic-cover"])}>
-        <source
-          media="(min-width: 1200px)"
-          srcSet="
+        <form
+          onSubmit={sendDetails}
+          className={styles.classes(["login-container"])}
+        >
+          <div className={styles.classes(["form-group"])}>
+            <label
+              className={styles.classes(["login-label"], ["no-touch"])}
+              htmlFor="username"
+            >
+              USERNAME
+            </label>
+            <input
+              ref={usernameInputRef}
+              className={styles.classes(["credentials-input"])}
+              placeholder="username"
+              type="text"
+              name="club_username"
+              id="username"
+            />
+          </div>
+          <div className={styles.classes(["form-group"])}>
+            <label
+              className={styles.classes(["login-label"], ["no-touch"])}
+              htmlFor="password"
+            >
+              PASSWORD
+            </label>
+            <input
+              ref={passwordInputRef}
+              className={styles.classes(["credentials-input"])}
+              placeholder="password"
+              type="password"
+              name="club_password"
+              id="password"
+            />
+          </div>
+          <div className={styles.classes(["form-group", "submit-btn-wrapper"])}>
+            <input
+              className={styles.classes(["submit-btn"])}
+              type="submit"
+              value="LOGIN"
+            />
+          </div>
+          <div
+            ref={invalidCredsContainerRef}
+            className={styles.classes(["invalid-creds-container", "invisible"])}
+          >
+            <h3>Invalid Credentials. Please Try Again!</h3>
+          </div>
+        </form>
+        <div className={styles.classes(["gradient"])}></div>
+        <picture className={styles.classes(["login-pic-cover"])}>
+          <source
+            media="(min-width: 1200px)"
+            srcSet="
             https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80
           "
-        />
-        <img
-          className={styles.classes(["pic-cover"])}
-          src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
-          alt=""
-        />
-      </picture>
-    </main>
+          />
+          <img
+            className={styles.classes(["pic-cover"])}
+            src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+            alt=""
+          />
+        </picture>
+      </main>
+    </>
   );
 };
 

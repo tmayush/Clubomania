@@ -43,6 +43,10 @@ async function expireSessions() {
   console.log(recordsToDelete);
   return await sessionsModel.deleteMany({ _id: { $in: recordsToDelete } });
 }
+async function expireSession(session_id) {
+  const result = await sessionsModel.deleteOne({ session_id });
+  console.log(result);
+}
 
 function expireSessionsAsync(seconds) {
   setInterval(async () => {
@@ -54,6 +58,7 @@ function expireSessionsAsync(seconds) {
 module.exports = {
   checkCookie,
   createSession,
+  expireSession,
   expireSessions,
   expireSessionsAsync,
 };

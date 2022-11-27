@@ -8,10 +8,21 @@ import profileImg from "../../common_components/club_header/assets/valorant-pfp-
 import { authAndRedirect, authCheck } from "../../utils/auth";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../hooks/AuthProvider";
+import NavbarWrapper from "../../common_components/navbar/NavbarWrapper";
 
-const renderMainContent = function (styles) {
+const renderMainContent = function (
+  styles,
+  { clubName, coverImg, profileImg }
+) {
   return (
     <>
+      <NavbarWrapper />
+      <ClubHeader
+        clubName={clubName}
+        coverImg={coverImg}
+        profileImg={profileImg}
+      />
       <main className={styles.classes(["console-container"])}>
         <div className={styles.classes(["item-outer"], ["no-touch"])}>
           <div className={styles.classes(["item-inner"])}>
@@ -50,36 +61,34 @@ const renderMainContent = function (styles) {
   );
 };
 
-const renderLoading = function (styles) {
-  return (
-    <div className={styles.classes(["loading-heading"], ["no-touch"])}>
-      Still Loading...
-    </div>
-  );
-};
-
 const ClubConsole = (props) => {
   const styles = new StyleManager(clubConsoleStyles);
   const [loading, setLoading] = useState(true);
+  const auth = useAuth();
+  // console.log(auth);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const navigatePathList = [
-      {
-        statusCode: 200,
-        to: "",
-      },
-      {
-        statusCode: 401,
-        to: "/login",
-      },
-    ];
-    authAndRedirect(navigate, navigatePathList, "/").then(() => {
-      setLoading(false);
-    });
-  }, []);
-
-  return loading ? renderLoading(styles) : renderMainContent(styles);
+  // useEffect(() => {
+  //   const navigatePathList = [
+  //     {
+  //       statusCode: 200,
+  //       to: "",
+  //     },
+  //     {
+  //       statusCode: 401,
+  //       to: "/login",
+  //     },
+  //   ];
+  //   authAndRedirect(navigate, navigatePathList, "/").then(() => {
+  //     setLoading(false);
+  //   });
+  // }, []);
+  const clubDetails = {
+    clubName: auth.name,
+    coverImg: auth.cover_photo_url,
+    profileImg: auth.profile_photo_url,
+  };
+  return renderMainContent(styles, clubDetails);
 };
 
 ClubConsole.propTypes = {};

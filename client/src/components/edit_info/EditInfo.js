@@ -4,6 +4,7 @@ import editInfoStyles from "./styles/editInfo.module.css";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { authAndRedirect } from "../../utils/auth";
+import { useAuth } from "../../hooks/AuthProvider";
 
 const renderMainContent = function (styles) {
   return (

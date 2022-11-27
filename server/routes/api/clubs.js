@@ -174,6 +174,14 @@ router.post("/create_event", async (req, res) => {
   }
 });
 
+router.post("/logout", async (req, res) => {
+  const cookie_header = req.headers.cookie;
+  if (cookie_header === undefined)
+    return res.status(401).json({ msg: "not authorized" });
+  const cookies = await retrieveCookies(cookie_header);
+  sessionServices.expireSession(cookies.session_id);
+  return res.status(200).json({ msg: "Cookie deleted" });
+});
 // -------------PUT REQUESTS -----------------
 /**
  * Edits event info

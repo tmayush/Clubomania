@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
+import { useAuth } from "../../hooks/AuthProvider";
 import { authCheck } from "../../utils/auth";
 import StyleManager from "../../utils/css-utils";
 import clubHeaderStyles from "./styles/club_header.module.css";
@@ -39,10 +40,10 @@ const renderLoading = function (styles) {
   );
 };
 
-const ClubHeader = ({ clubName, coverImg, profileImg, setAuth }) => {
+const ClubHeader = ({ clubName, coverImg, profileImg }) => {
   const styles = new StyleManager(clubHeaderStyles);
-  const [loading, setLoading] = useState(false);
-  const navigate = useNavigate();
+  // const [loading, setLoading] = useState(false);
+  // const navigate = useNavigate();
   useEffect(() => {
     // const authCheckParams = {
     //   setLoading,
@@ -55,9 +56,7 @@ const ClubHeader = ({ clubName, coverImg, profileImg, setAuth }) => {
     // });
   }, []);
 
-  return loading
-    ? renderLoading(styles)
-    : renderMainContent({ clubName, coverImg, profileImg }, styles);
+  return renderMainContent({ clubName, coverImg, profileImg }, styles);
 };
 
 ClubHeader.propTypes = {};
