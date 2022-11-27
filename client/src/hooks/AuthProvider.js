@@ -16,7 +16,6 @@ function AuthProvider({ children }) {
 
   async function isAuthenticated() {
     const authData = await isAuthorized();
-    console.log("Called Authorized");
     setAuth(authData);
     if (authData) return true;
     return false;

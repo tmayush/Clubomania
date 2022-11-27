@@ -13,7 +13,8 @@ import NavbarWrapper from "../../common_components/navbar/NavbarWrapper";
 
 const renderMainContent = function (
   styles,
-  { clubName, coverImg, profileImg }
+  { clubName, coverImg, profileImg },
+  dashboardActions
 ) {
   return (
     <>
@@ -24,38 +25,24 @@ const renderMainContent = function (
         profileImg={profileImg}
       />
       <main className={styles.classes(["console-container"])}>
-        <div className={styles.classes(["item-outer"], ["no-touch"])}>
-          <div className={styles.classes(["item-inner"])}>
-            <h1 className={styles.classes(["box-heading"])}>create event</h1>
-            <p className={styles.classes(["box-para"])}>
-              Create a new event to spread a word about it
-            </p>
-          </div>
-        </div>
-        <div className={styles.classes(["item-outer"], ["no-touch"])}>
-          <div className={styles.classes(["item-inner"])}>
-            <h1 className={styles.classes(["box-heading"])}>edit events</h1>
-            <p className={styles.classes(["box-para"])}>
-              Edit existng events to update information
-            </p>
-          </div>
-        </div>
-        <div className={styles.classes(["item-outer"], ["no-touch"])}>
-          <div className={styles.classes(["item-inner"])}>
-            <h1 className={styles.classes(["box-heading"])}>preview events</h1>
-            <p className={styles.classes(["box-para"])}>
-              Preview your published events
-            </p>
-          </div>
-        </div>
-        <div className={styles.classes(["item-outer"], ["no-touch"])}>
-          <div className={styles.classes(["item-inner"])}>
-            <h1 className={styles.classes(["box-heading"])}>edit club info</h1>
-            <p className={styles.classes(["box-para"])}>
-              Edit your club info, like: cover photo, description, etc.
-            </p>
-          </div>
-        </div>
+        {dashboardActions.map((valueArr) => {
+          return (
+            <div
+              key={valueArr.name}
+              onClick={valueArr.action}
+              className={styles.classes(["item-outer"], ["no-touch"])}
+            >
+              <div className={styles.classes(["item-inner"])}>
+                <h1 className={styles.classes(["box-heading"])}>
+                  {valueArr.name}
+                </h1>
+                <p className={styles.classes(["box-para"])}>
+                  {valueArr.description}
+                </p>
+              </div>
+            </div>
+          );
+        })}
       </main>
     </>
   );
@@ -67,6 +54,36 @@ const ClubConsole = (props) => {
   const auth = useAuth();
   // console.log(auth);
   const navigate = useNavigate();
+  const dashboardActions = [
+    {
+      name: "create event",
+      description: "Create a new event to spread a word about it",
+      action: () => {
+        navigate("/dashboard/create_event");
+      },
+    },
+    {
+      name: "edit events",
+      description: "Edit existng events to update information",
+      action: () => {
+        navigate("/dashboard/edit_events");
+      },
+    },
+    {
+      name: "preview events",
+      description: "Preview your published events",
+      action: () => {
+        navigate(`/club/${auth.username}`);
+      },
+    },
+    {
+      name: "edit club info",
+      description: "Edit your club info, like: cover photo, description, etc.",
+      action: () => {
+        navigate("/dashboard/edit_info");
+      },
+    },
+  ];
 
   // useEffect(() => {
   //   const navigatePathList = [
@@ -88,7 +105,7 @@ const ClubConsole = (props) => {
     coverImg: auth.cover_photo_url,
     profileImg: auth.profile_photo_url,
   };
-  return renderMainContent(styles, clubDetails);
+  return renderMainContent(styles, clubDetails, dashboardActions);
 };
 
 ClubConsole.propTypes = {};

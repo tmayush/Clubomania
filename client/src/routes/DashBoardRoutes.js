@@ -11,10 +11,11 @@ import Loading from "../common_components/loading/Loading";
 const DashBoardRoutes = (props) => {
   return (
     <Routes>
-      <Route path="*" element={<LoadingWrapper />}>
+      <Route path="/" element={<LoadingWrapper />}>
         <Route index element={<ClubConsole />} />
         <Route path="edit_info" element={<EditInfo />} />
         <Route path="edit_events" element={<EditInfo />} />
+        <Route path="*" element={<h1>404</h1>} />
       </Route>
     </Routes>
   );
