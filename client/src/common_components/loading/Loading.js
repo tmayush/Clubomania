@@ -12,7 +12,7 @@ const Loading = (props) => {
     authHelpers.isAuthenticated().then((val) => {
       console.log(val + " got from json");
       if (val === false) {
-        // navigate("/");
+        navigate("/");
         console.log("val is false");
       }
     });

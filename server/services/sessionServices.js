@@ -7,7 +7,7 @@ async function createSession(club_id) {
   const session_id = generateRandomCharacters(15);
   const timeperiod = {
     hours: 0,
-    minutes: 1, //TODO: change duration during final testing
+    minutes: 10, //TODO: change duration during final testing
     seconds: 0,
   };
   sessionsModel.create({

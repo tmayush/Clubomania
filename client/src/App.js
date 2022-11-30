@@ -24,6 +24,7 @@ import { AuthProvider } from "./hooks/AuthProvider";
 import ClubRoutes from "./routes/ClubRoutes";
 import DashBoardRoutes from "./routes/DashBoardRoutes";
 import NavbarWrapper from "./common_components/navbar/NavbarWrapper";
+import LoadingWrapper from "./common_components/loading/LoadingWrapper";
 
 // function Something() {
 //   const { club_id } = useParams();
@@ -51,29 +52,10 @@ function App() {
   const [auth, setAuth] = useState({});
   console.log("render");
 
-  // const checkAuthState = (auth) => {
-  //   return !(Object.keys(auth).length === 0);
-  // };
-
-  useEffect(() => {
-    // authorize().then((res) => {
-    //   if (res.status === 200) setAuth(res.data);
-    // });
-  }, []);
+  useEffect(() => {}, []);
 
   // After auth state changes
-  useEffect(() => {
-    // console.log(`isAuthorized: ${checkAuthState(auth)}`);
-    // console.log(auth);
-  }, [auth]);
-
-  // return (
-  //   <Event
-  //     eventTitle={"hi"}
-  //     eventShortDesc={"lorem ipsum"}
-  //     eventThumbnailURL="/assets/test.jpg"
-  //   />
-  // );
+  useEffect(() => {}, [auth]);
 
   return (
     <BrowserRouter>
@@ -86,21 +68,7 @@ function App() {
         {/* Auth */}
         <Route path="/login" element={<Login setAuth={setAuth} />} />
         <Route path="/dashboard/*" element={<DashBoardRoutes />} />
-        {/* <Route
-            path="dashboard"
-            element={
-              <ClubHeader
-                clubName={auth.name}
-                coverImg={coverImg}
-                profileImg={profileImg}
-                setAuth={setAuth}
-              />
-            }
-          >
-            <Route index element={<ClubConsole />} />
-            <Route path="edit_info" element={<EditInfo />} />
-            <Route path="edit_events" element={<EditInfo />} />
-          </Route> */}
+        <Route path="/protected" element={<LoadingWrapper />} />
       </Routes>
     </BrowserRouter>
   );

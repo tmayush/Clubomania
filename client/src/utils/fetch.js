@@ -28,9 +28,24 @@ async function postRequest(url, data) {
     data: res_data,
   };
 }
+async function putRequest(url, data) {
+  const response = await fetch(url, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  });
+  const res_data = await response.json();
+  return {
+    status: response.status,
+    data: res_data,
+  };
+}
 
 const fetchUtil = {
   getRequest,
   postRequest,
+  putRequest,
 };
 export default fetchUtil;

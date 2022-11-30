@@ -3,10 +3,8 @@ import PropTypes from "prop-types";
 import { Route, Routes } from "react-router-dom";
 import ClubConsole from "../components/club_console/ClubConsole";
 import EditInfo from "../components/edit_info/EditInfo";
-import ClubHeader from "../common_components/club_header/ClubHeader";
 import LoadingWrapper from "../common_components/loading/LoadingWrapper";
-import { AuthProvider } from "../hooks/AuthProvider";
-import Loading from "../common_components/loading/Loading";
+import EditEvents from "../pages/EditEvents/EditEvents";
 
 const DashBoardRoutes = (props) => {
   return (
@@ -14,7 +12,7 @@ const DashBoardRoutes = (props) => {
       <Route path="/" element={<LoadingWrapper />}>
         <Route index element={<ClubConsole />} />
         <Route path="edit_info" element={<EditInfo />} />
-        <Route path="edit_events" element={<EditInfo />} />
+        <Route path="edit_events" element={<EditEvents />} />
         <Route path="*" element={<h1>404</h1>} />
       </Route>
     </Routes>

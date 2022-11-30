@@ -62,7 +62,7 @@ const ProfileIcon = (props) => {
             actionName={"Sign Out"}
             action={(e) => {
               fetchUtil.postRequest("/api/logout").then((responseMsg) => {
-                navigate("/");
+                navigate("/protected");
               });
             }}
           />

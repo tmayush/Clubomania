@@ -30,7 +30,6 @@ async function pushEvents(eventIds) {
 }
 
 const renderMainContent = function (styles, clubDetails, events) {
-  // console.log(events);
   return (
     <>
       {clubDetails && (

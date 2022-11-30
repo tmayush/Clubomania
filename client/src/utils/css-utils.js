@@ -21,7 +21,7 @@ class StyleManager {
       output += `${this.styles[className]} `;
     });
     output += globals.join(" ");
-    return output;
+    return output.trim();
   }
 }
 
