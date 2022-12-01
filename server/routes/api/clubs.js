@@ -174,6 +174,10 @@ router.post("/create_event", async (req, res) => {
   }
 });
 
+/**
+ * club logout
+ * Authorized User Protection
+ */
 router.post("/logout", async (req, res) => {
   const cookie_header = req.headers.cookie;
   if (cookie_header === undefined)
@@ -191,8 +195,8 @@ router.put("/edit_event", async (req, res) => {
   const auth = await isAuthorized(req.headers.cookie);
   if (!auth) return res.status(401).send({ msg: "not authorized" });
   // const requiredFields = ["_id"];
-  const fieldFilter = { _id: req.body["_id"], club_id: auth };
-  delete req.body["_id"];
+  const fieldFilter = { _id: req.body["id"], club_id: auth };
+  delete req.body["id"];
   if (fieldFilter["_id"] === undefined)
     return res.status(400).send({ msg: "missing id" });
   if (!miscServices.checkValidId(fieldFilter["_id"]))
@@ -281,8 +285,8 @@ router.delete("/delete_event", async (req, res) => {
   const auth = await isAuthorized(req.headers.cookie);
   if (!auth) return res.status(401).send({ msg: "not authorized" });
   // const requiredFields = ["_id"];
-  const fieldFilter = { _id: req.body["_id"], club_id: auth };
-  delete req.body["_id"];
+  const fieldFilter = { _id: req.body["id"], club_id: auth };
+  // delete req.body["_id"];
   if (fieldFilter["_id"] === undefined)
     return res.status(400).send({ msg: "missing id" });
   if (!miscServices.checkValidId(fieldFilter["_id"]))

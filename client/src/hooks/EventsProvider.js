@@ -1,10 +1,12 @@
-import { useEffect, useState } from "react";
-import { getEventDetails } from "../utils/eventUtils";
-import fetchUtil from "../utils/fetch";
+import { createContext, useContext, useState } from "react";
 
-const useFetchPosts = (club_username) => {
+const EventsProvider = createContext();
+
+function useCurrentEvent() {
+  return useContext(EventsProvider);
+}
+function EventsProvider({ children }) {
   const [events, setEvents] = useState([]);
-  const [refreshEvents, setRefreshEvents] = useState(0);
   useEffect(() => {
     async function fetchData() {
       const fetchedEvents = [];
@@ -23,8 +25,11 @@ const useFetchPosts = (club_username) => {
       setEvents(fetchedEvents);
     }
     fetchData();
-  }, [refreshEvents]);
-  return [events, setRefreshEvents];
-};
-
-export default useFetchPosts;
+  }, []);
+  return (
+    <EventsProvider.Provider value={[currentEvent, setCurrentEvent]}>
+      {children}
+    </EventsProvider.Provider>
+  );
+}
+export { useCurrentEvent, EventsProvider };

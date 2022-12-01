@@ -5,7 +5,7 @@ const missingFieldMessage = "missing field";
 // Visible to frontend as well
 const fieldLengths = {
   title: { min: 1, max: 30 },
-  body_preview: { min: 10, max: 25 },
+  body_preview: { min: 10, max: 150 },
 };
 // /Visible to frontend as well
 const eventSchema = new mongoose.Schema({

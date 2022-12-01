@@ -32,5 +32,5 @@ app.listen(PORT, () => {
     },
     (e) => console.log(e)
   );
-  expireSessionsAsync(60);
+  // expireSessionsAsync(60);
 });
