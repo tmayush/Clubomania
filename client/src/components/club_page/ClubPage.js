@@ -40,7 +40,10 @@ const renderMainContent = function (styles, clubDetails, events) {
         />
       )}
       <section className={styles.classes(["club-info"])}>
-        <div className={styles.classes(["about-club"])}></div>
+        <div className={styles.classes(["about-club"])}>
+          <h3>About</h3>
+          <p>{clubDetails.description}</p>
+        </div>
         <EventsContainer events={events} />
       </section>
     </>

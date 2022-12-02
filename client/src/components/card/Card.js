@@ -8,17 +8,13 @@ const Card = ({ clubProperties }) => {
   const { username, acronym, tagline, cover_photo_url, profile_photo_url } =
     clubProperties;
   const styles = new StyleManager(cardStyles);
-  const cardContainerRef = useRef();
   const navigate = useNavigate();
 
-  useEffect(() => {
-    cardContainerRef.current.addEventListener("click", (e) => {
-      navigate(`/club/${username}`);
-    });
-  }, []);
-
   return (
-    <div ref={cardContainerRef} className={styles.classes(["cardContainer"])}>
+    <div
+      className={styles.classes(["cardContainer"])}
+      onClick={() => navigate(`/club/${username}`)}
+    >
       <div className={styles.classes(["images"])}>
         <img
           className={styles.classes(["coverImage"])}

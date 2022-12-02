@@ -97,6 +97,8 @@ const EditEvent = () => {
             placeholder="Event Name"
             type="text"
             name="title"
+            minLength={1}
+            maxLength={30}
             id="title"
             onChange={afterChange}
             value={tempEventBuffer.title}
@@ -133,6 +135,8 @@ const EditEvent = () => {
             className={styles.classes(["form-input"])}
             placeholder="Body Preview"
             name="body_preview"
+            minLength={10}
+            maxLength={150}
             id="body_preview"
             onChange={afterChange}
             value={tempEventBuffer.body_preview}

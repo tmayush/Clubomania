@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import StyleManager from "../../utils/css-utils";
 import loginStyles from "./styles/login.module.css";
 import fetchUtil from "../../utils/fetch";
-import { authAndSuccessRedirect, authAndRedirect } from "../../utils/auth";
+import { authAndRedirect } from "../../utils/auth";
 import { useNavigate } from "react-router-dom";
 import NavbarWrapper from "../../common_components/navbar/NavbarWrapper";
 
@@ -38,10 +38,10 @@ const Login = ({ setAuth }) => {
     fetchUtil.postRequest("/api/login", data).then((club_data) => {
       console.log(club_data.status);
       if (club_data.status === 200) {
-        setAuth(club_data.data);
+        // setAuth(club_data.data);
         navigate("/dashboard");
       } else {
-        setAuth({});
+        // setAuth({});
         toggle(invalidCredsContainerRef.current, "invisible", false, 3000);
       }
     });
