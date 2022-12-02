@@ -27,8 +27,8 @@ async function updateEvent(eventDetails) {
 
 async function createEvent(eventDetails) {
   const createEventURL = new URL(`/api/create_event`, window.location.origin);
-  const res = await fetchUtil.postRequest(createEventURL);
+  const res = await fetchUtil.postRequest(createEventURL, eventDetails);
   return res.status;
 }
 
-export { getEventDetails, updateEvent, deleteEvent };
+export { getEventDetails, updateEvent, deleteEvent, createEvent };

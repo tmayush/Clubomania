@@ -1,37 +1,27 @@
 import React, { useEffect, useRef, useState } from "react";
 import PropTypes from "prop-types";
 import StyleManager from "../../utils/css-utils";
-import editEventStyles from "./EditEvent.module.css";
-import { deleteEvent, updateEvent } from "../../utils/eventUtils";
+import createEventStyles from "./CreateEvent.module.css";
+import { createEvent } from "../../utils/eventUtils";
 import {
   useCurrentEvent,
   useGetEventsList,
 } from "../../hooks/EventDetailsProvider";
 
-const EditEvent = () => {
-  const styles = new StyleManager(editEventStyles);
+const CreateEventComponent = () => {
+  const styles = new StyleManager(createEventStyles);
   // TODO: apply styles.classes to HtmlFor and ids
   const defaultEventFormValues = {
-    id: "",
     title: "",
     thumbnail_url: "",
     body_preview: "",
     body: "",
   };
-  const getEventList = useGetEventsList();
-  const [currentEvent, setCurrentEvent] = useCurrentEvent();
   const [tempEventBuffer, setTempEventBuffer] = useState({
     ...defaultEventFormValues,
   });
+
   const formRef = useRef();
-
-  useEffect(() => {
-    getEventList.fetchAndSetEvents();
-  }, [currentEvent.id]);
-
-  useEffect(() => {
-    setTempEventBuffer({ ...currentEvent });
-  }, [currentEvent]);
 
   const afterChange = (e) => {
     const field = e.target.name;
@@ -46,28 +36,10 @@ const EditEvent = () => {
       return formRef.current.reportValidity();
     let status;
     switch (e.target.name) {
-      case "discard":
-        setTempEventBuffer({ ...currentEvent });
-        break;
-      case "delete":
-        status = await deleteEvent(currentEvent.id);
-        if (status === 200) {
-          alert("Event Deleted Successfully");
-          getEventList.updateEventList();
-          setTempEventBuffer({ ...defaultEventFormValues });
-        } else {
-          alert("Something went wrong :( Event Not Deleted");
-        }
-        break;
-      case "save":
-        status = await updateEvent(tempEventBuffer);
-        if (status === 200) {
-          setCurrentEvent({ ...tempEventBuffer });
-          getEventList.updateEventList();
-          alert("Event Saved Successfully");
-        } else {
-          alert("Something went wrong :( Event Not Saved");
-        }
+      case "create":
+        status = await createEvent(tempEventBuffer);
+        if (status === 200) alert("Event Created Successfully");
+        else alert("Something went wrong :( Event Not Created");
         break;
       default:
         break;
@@ -78,7 +50,7 @@ const EditEvent = () => {
   return (
     <section className={styles.classes(["edit-event-section"])}>
       <h1 className={styles.classes(["edit-event-heading"], ["no-touch"])}>
-        EDIT EVENT
+        CREATE EVENT
       </h1>
       <form
         className={styles.classes(["edit-event-form-container"])}
@@ -95,6 +67,9 @@ const EditEvent = () => {
           <input
             className={styles.classes(["form-input"])}
             placeholder="Event Name"
+            required
+            minLength={1}
+            maxLength={30}
             type="text"
             name="title"
             id="title"
@@ -112,6 +87,7 @@ const EditEvent = () => {
           <input
             className={styles.classes(["form-input"])}
             placeholder="Thumbnail URL"
+            required
             type="url"
             name="thumbnail_url"
             id="thumbnail_url"
@@ -133,6 +109,9 @@ const EditEvent = () => {
             className={styles.classes(["form-input"])}
             placeholder="Body Preview"
             name="body_preview"
+            required
+            minLength={10}
+            maxLength={150}
             id="body_preview"
             onChange={afterChange}
             value={tempEventBuffer.body_preview}
@@ -152,6 +131,7 @@ const EditEvent = () => {
             className={styles.classes(["form-input"])}
             placeholder="Event Body"
             name="body"
+            required
             id={styles.classes(["event_body"])}
             onChange={afterChange}
             value={tempEventBuffer.body}
@@ -159,24 +139,10 @@ const EditEvent = () => {
         </div>
         <div className={styles.classes(["form-group", "actions__form-group"])}>
           <input
-            className={styles.classes(["submit-btn", "discard-btn"])}
+            className={styles.classes(["submit-btn", "create-btn"])}
             type="submit"
-            name="discard"
-            value="Discard"
-            onClick={clickAction}
-          />
-          <input
-            className={styles.classes(["submit-btn", "delete-btn"])}
-            type="submit"
-            name="delete"
-            value="Delete"
-            onClick={clickAction}
-          />
-          <input
-            className={styles.classes(["submit-btn", "save-btn"])}
-            type="submit"
-            name="save"
-            value="Save"
+            name="create"
+            value="create"
             onClick={clickAction}
           />
         </div>
@@ -185,6 +151,6 @@ const EditEvent = () => {
   );
 };
 
-EditEvent.propTypes = {};
+CreateEventComponent.propTypes = {};
 
-export default EditEvent;
+export default CreateEventComponent;

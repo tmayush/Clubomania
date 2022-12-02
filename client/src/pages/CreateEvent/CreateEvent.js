@@ -1,30 +1,28 @@
 import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import StyleManager from "../../utils/css-utils";
-import editEventsStyles from "./EditEvents.module.css";
-import EventList from "../../components/event_list/EventList";
-import EditEvent from "../../components/edit_event/EditEvent";
+import editEventsStyles from "../EditEvents/EditEvents.module.css";
 import NavbarWrapper from "../../common_components/navbar/NavbarWrapper";
 import useFetchPosts from "../../hooks/useFetchPosts";
 import { useAuth } from "../../hooks/AuthProvider";
 import { EventDetailsProvider } from "../../hooks/EventDetailsProvider";
+import CreateEventComponent from "../../components/create_event/CreateEventComponent";
 
-const EditEvents = (props) => {
+const CreateEvent = (props) => {
   const styles = new StyleManager(editEventsStyles);
-  const auth = useAuth();
+  // const auth = useAuth();
+  // const [eventsBaseList, setEventsBaseList] = useFetchPosts(auth.username);
+  // const [refresh, setRefresh] = useState(false);
   return (
     <>
       <NavbarWrapper />
       <main className={styles.classes(["container"])}>
-        <EventDetailsProvider club_username={auth.username}>
-          <EventList />
-          <EditEvent />
-        </EventDetailsProvider>
+        <CreateEventComponent />
       </main>
     </>
   );
 };
 
-EditEvents.propTypes = {};
+CreateEvent.propTypes = {};
 
-export default EditEvents;
+export default CreateEvent;
