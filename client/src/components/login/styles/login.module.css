@@ -6,7 +6,7 @@
   display: grid;
   grid-template-columns: 25% 75%;
   grid-template-rows: 30% 70%;
-  height: 100vh;
+  height: calc(100vh - var(--nav-height));
 }
 /* Utilites */
 .invisible {
