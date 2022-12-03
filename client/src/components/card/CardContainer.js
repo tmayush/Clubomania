@@ -4,7 +4,6 @@ import StyleManager from "../../utils/css-utils";
 import fetchUtil from "../../utils/fetch";
 import cardContainerStyles from "./styles/cardContainer.module.css";
 import Card from "./Card";
-import logo from "../../assets/test-wide.jpg";
 import { useEffect, useRef, useState } from "react";
 
 const CardContainer = (props) => {
