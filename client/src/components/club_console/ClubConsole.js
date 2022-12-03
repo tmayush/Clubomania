@@ -85,21 +85,6 @@ const ClubConsole = (props) => {
     },
   ];
 
-  // useEffect(() => {
-  //   const navigatePathList = [
-  //     {
-  //       statusCode: 200,
-  //       to: "",
-  //     },
-  //     {
-  //       statusCode: 401,
-  //       to: "/login",
-  //     },
-  //   ];
-  //   authAndRedirect(navigate, navigatePathList, "/").then(() => {
-  //     setLoading(false);
-  //   });
-  // }, []);
   const clubDetails = {
     clubName: auth.name,
     coverImg: auth.cover_photo_url,

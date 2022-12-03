@@ -26,15 +26,15 @@ const AppNavbar = ({ navLinks }) => {
             ["no-touch"]
           )}
         >
-          <div className={styles.classes(["brand-logo-container"])}>
+          {/* <div className={styles.classes(["brand-logo-container"])}>
             <img
               src="https://upload.wikimedia.org/wikipedia/commons/3/3c/IMG_logo_%282017%29.svg"
               alt=""
               className={styles.classes(["brand-logo"])}
             />
-          </div>
+          </div> */}
           <div className={styles.classes(["brand-text-container"])}>
-            <h1 className={styles.classes(["brand-text"])}>My Brand</h1>
+            <h1 className={styles.classes(["brand-text"])}>CLUBOMANIA</h1>
           </div>
         </div>
         <div className={styles.classes(["nav-component"])}>
