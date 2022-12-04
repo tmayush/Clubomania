@@ -33,21 +33,22 @@ app.listen(PORT, () => {
     },
     (e) => console.log(e)
   );
-  // clubServices
-  //   .createClub({
-  //     username: "udc",
-  //     password: "udc123456",
-  //     name: "United Dance Crew",
-  //     acronym: "UDC",
-  //     tagline: "The dance club of CBIT",
-  //     description: "The dance club of CBIT",
-  //     profile_photo_url:
-  //       "https://instagram.fbpm1-2.fna.fbcdn.net/v/t51.2885-19/270291690_1073340810088667_8590092613476919743_n.jpg?stp=dst-jpg_s320x320&_nc_ht=instagram.fbpm1-2.fna.fbcdn.net&_nc_cat=111&_nc_ohc=yV68CEvKMgsAX-3rhs1&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AfBEdno1yXhiv3aGa8Jtz6D0czNzbq8BHEZzkAAjeXcp6A&oe=638FF8BF&_nc_sid=8fd12b",
-  //     cover_photo_url:
-  //       "https://instagram.fbpm1-2.fna.fbcdn.net/v/t51.2885-15/288577124_741988493786984_9032169639501185212_n.jpg?stp=dst-jpg_e35&_nc_ht=instagram.fbpm1-2.fna.fbcdn.net&_nc_cat=108&_nc_ohc=WdnC0zDlswwAX__g6Ea&edm=ALQROFkBAAAA&ccb=7-5&ig_cache_key=Mjg2MjU5NjI5OTk4ODY0NzgyMg%3D%3D.2-ccb7-5&oh=00_AfB7q38aAlVHlLo_moq-ClRJMMnjsAtz83Coi_DudKCy3A&oe=63910D8A&_nc_sid=30a2ef",
-  //   })
-  //   .then((value) => {
-  //     console.log(value);
-  //   });
+  clubServices;
+  // .createClub({
+  //   username: "edc",
+  //   password: "edc123456",
+  //   name: "Entrepreneurship Development Cell",
+  //   acronym: "EDC",
+  //   tagline: "Entrepreneu 'rising' ideas",
+  //   description:
+  //     "Entrepreneurship Development Cell (EDC), CBIT, is a student coordinated club supervised by experienced faculty members. The motto of the club is Entrepreneu 'rising ideas'. The club has a vision  to pave a path towards Entrepreneurial India. The institute aims to groom and support all students with entrepreneurial interests and start up ideas",
+  //   profile_photo_url:
+  //     "https://instagram.fhyd14-1.fna.fbcdn.net/v/t51.2885-19/234001538_133626902205570_4273246450249704301_n.jpg?stp=dst-jpg_s320x320&_nc_ht=instagram.fhyd14-1.fna.fbcdn.net&_nc_cat=106&_nc_ohc=3xW3KOZwZi0AX_1ZPGc&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AfCSiqGK0KWb2oZOUeKgeHNiJxD6nsa1gQgVXaBK2irYQQ&oe=63921824&_nc_sid=8fd12b",
+  //   cover_photo_url:
+  //     "https://scontent.fhyd14-1.fna.fbcdn.net/v/t39.30808-6/307588511_160002659979220_53307338162365756_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=gXlTC4aEP7IAX-HWsOW&_nc_ht=scontent.fhyd14-1.fna&oh=00_AfBJk3X3YMx3y8LXzEOQYzoUBIGLFq_wxVTSZy6hLV55sg&oe=63918457",
+  // })
+  // .then((value) => {
+  //   console.log(value);
+  // });
   // expireSessionsAsync(60);
 });
