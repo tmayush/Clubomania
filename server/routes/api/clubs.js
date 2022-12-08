@@ -18,7 +18,7 @@ async function retrieveCookies(cookies) {
   const cookie_obj = {};
   cookies.split(";").forEach((cookie) => {
     const pairs = cookie.split("=");
-    cookie_obj[pairs[0]] = pairs[1];
+    cookie_obj[pairs[0].trim()] = pairs[1];
   });
   return cookie_obj;
 }
