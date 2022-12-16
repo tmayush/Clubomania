@@ -33,7 +33,7 @@ app.listen(PORT, () => {
     },
     (e) => console.log(e)
   );
-  clubServices;
+  // clubServices
   // .createClub({
   //   username: "edc",
   //   password: "edc123456",

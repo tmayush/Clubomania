@@ -14,6 +14,7 @@ import ClubRoutes from "./routes/ClubRoutes";
 import DashBoardRoutes from "./routes/DashBoardRoutes";
 import NavbarWrapper from "./common_components/navbar/NavbarWrapper";
 import LoadingWrapper from "./common_components/loading/LoadingWrapper";
+import Homepage from "./pages/Homepage/Homepage";
 
 function Home() {
   return (
@@ -39,7 +40,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<NavbarWrapper />}>
-          <Route index element={<Home />} />
+          <Route index element={<Homepage />} />
           <Route path="clubs" element={<CardContainer />} />
           <Route path="club/*" element={<ClubRoutes />} />
         </Route>

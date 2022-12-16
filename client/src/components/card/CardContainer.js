@@ -5,6 +5,7 @@ import fetchUtil from "../../utils/fetch";
 import cardContainerStyles from "./styles/cardContainer.module.css";
 import Card from "./Card";
 import { useEffect, useRef, useState } from "react";
+import layerSVG from "./assets/layered-waves.svg";
 
 const CardContainer = (props) => {
   const [clubProperties, setClubProperties] = useState([]);
@@ -22,6 +23,13 @@ const CardContainer = (props) => {
     <main>
       <div className={styles.classes(["hero"], ["centerElement", "no-touch"])}>
         clubs
+      </div>
+      <div className={styles.classes(["layers"])}>
+        <img
+          className={styles.classes([], ["no-drag"])}
+          src={layerSVG}
+          alt=""
+        />
       </div>
       <div className={styles.classes(["cardSection"])}>
         {clubProperties.map((clubProperty) => {

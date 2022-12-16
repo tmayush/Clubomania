@@ -5,3 +5,8 @@
   --primary-color: #333333;
   --nav-height: 5rem;
 }
+.no-drag {
+  user-drag: none;
+  -webkit-user-drag: none;
+  pointer-events: none;
+}
