@@ -4,6 +4,12 @@ import HomepageStyles from "./styles/Homepage.module.css";
 import StyleManager from "../../utils/css-utils";
 import Card from "../../components/card/Card";
 import layersSVG from "./assets/layers.svg";
+import linkedInIcon from "./assets/linkedin.png";
+import twitterIcon from "./assets/twitter.png";
+import instagramIcon from "./assets/instagram.png";
+import kushal from "./assets/kushal.jpg";
+import mayush from "./assets/mayush.jpg";
+import rithvik from "./assets/card-image.jpeg";
 
 const Homepage = (props) => {
   const styles = new StyleManager(HomepageStyles);
@@ -63,7 +69,7 @@ const Homepage = (props) => {
             <section className={c(["card-bg"])}>
               <img
                 className={c(["card-image"])}
-                src="card-image.jpeg"
+                src={rithvik}
                 width="100px"
                 height="100px"
               />
@@ -71,21 +77,21 @@ const Homepage = (props) => {
             </section>
             <section className={c(["card-content"])}>
               <p className={c(["card-desc"])}>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Praesentium ipsa ipsum in reiciendis error a, quasi omnis vel
-                similique blanditiis, doloremque quod vitae eius suscipit animi
-                sint facere corrupti ad.
+                I am an enthusiastic, self-motivated, reliable, responsible and
+                hard working person. I am a mature team worker and adaptable to
+                all challenging situations. I am able to work well both in a
+                team environment as well as using own initiative
               </p>
               <h2>Follow Me</h2>
               <div className={c(["social-media"])}>
                 <a className={c(["icon"])} href="#">
-                  <img src="linkedin.png" height="23px" />
+                  <img src={linkedInIcon} height="23px" />
                 </a>
                 <a className={c(["icon"])} href="#">
-                  <img src="instagram.png" height="23px" />
+                  <img src={instagramIcon} height="23px" />
                 </a>
                 <a className={c(["icon"])} href="#">
-                  <img src="twitter.png" height="23px" />
+                  <img src={twitterIcon} height="23px" />
                 </a>
               </div>
             </section>
@@ -94,29 +100,29 @@ const Homepage = (props) => {
             <section className={c(["card-bg"])}>
               <img
                 className={c(["card-image"])}
-                src="mayush.jpg"
+                src={mayush}
                 width="100px"
                 height="100px"
               />
-              <h2>MAYUSH TIMMAPURAM</h2>
+              <h2>MAYUSH T</h2>
             </section>
             <section className={c(["card-content"])}>
               <p className={c(["card-desc"])}>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Praesentium ipsa ipsum in reiciendis error a, quasi omnis vel
-                similique blanditiis, doloremque quod vitae eius suscipit animi
-                sint facere corrupti ad.
+                I am a hardworking student who is passionate about everything
+                related to web development. I follow-up on the most recent
+                changes in web. I look forward to learn and grow as a software
+                developer.
               </p>
               <h2>Follow Me</h2>
               <div className={c(["social-media"])}>
                 <a className={c(["icon"])} href="#">
-                  <img src="linkedin.png" height="23px" />
+                  <img src={linkedInIcon} height="23px" />
                 </a>
                 <a className={c(["icon"])} href="#">
-                  <img src="instagram.png" height="23px" />
+                  <img src={instagramIcon} height="23px" />
                 </a>
                 <a className={c(["icon"])} href="#">
-                  <img src="twitter.png" height="23px" />
+                  <img src={twitterIcon} height="23px" />
                 </a>
               </div>
             </section>
@@ -125,7 +131,7 @@ const Homepage = (props) => {
             <section className={c(["card-bg"])}>
               <img
                 className={c(["card-image"])}
-                src="kushal.jpg"
+                src={kushal}
                 width="100px"
                 height="100px"
               />
@@ -133,21 +139,22 @@ const Homepage = (props) => {
             </section>
             <section className={c(["card-content"])}>
               <p className={c(["card-desc"])}>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Praesentium ipsa ipsum in reiciendis error a, quasi omnis vel
-                similique blanditiis, doloremque quod vitae eius suscipit animi
-                sint facere corrupti ad.
+                I am an enthusiastic, self-motivated, reliable, responsible and
+                hard working person. I am a mature team worker and adaptable to
+                all challenging situations. I am able to work well both in a
+                team environment as well as using own initiative. Also i deal in
+                stock trading and make investments
               </p>
               <h2>Follow Me</h2>
               <div className={c(["social-media"])}>
                 <a className={c(["icon"])} href="#">
-                  <img src="linkedin.png" height="23px" />
+                  <img src={linkedInIcon} height="23px" />
                 </a>
                 <a className={c(["icon"])} href="#">
-                  <img src="instagram.png" height="23px" />
+                  <img src={instagramIcon} height="23px" />
                 </a>
                 <a className={c(["icon"])} href="#">
-                  <img src="twitter.png" height="23px" />
+                  <img src={twitterIcon} height="23px" />
                 </a>
               </div>
             </section>

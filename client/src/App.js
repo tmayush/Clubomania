@@ -16,17 +16,6 @@ import NavbarWrapper from "./common_components/navbar/NavbarWrapper";
 import LoadingWrapper from "./common_components/loading/LoadingWrapper";
 import Homepage from "./pages/Homepage/Homepage";
 
-function Home() {
-  return (
-    <Link
-      style={{ paddingTop: "5rem", fontSize: "2rem", display: "block" }}
-      to={"/clubs"}
-    >
-      Home
-    </Link>
-  );
-}
-
 function App() {
   const [auth, setAuth] = useState({});
   console.log("render");
